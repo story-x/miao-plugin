@@ -76,8 +76,8 @@ export const cfgSchema = {
         key: '排行人数',
         type: 'num',
         def: 15,
-        input: (n) => Math.min(30, Math.max(5, (n * 1 || 15))),
-        desc: '可选值5~30，建议15。设置高排名人数会提高图片的长度，图片较大可能会影响渲染与发送速度'
+        input: (n) => Math.min(50, Math.max(5, (n * 1 || 15))),
+        desc: '可选值5~50，建议15。设置高排名人数会提高图片的长度，图片较大可能会影响渲染与发送速度'
       },
       profileServer: {
         title: '面板服务',
@@ -156,6 +156,12 @@ export const cfgSchema = {
         key: '小清新',
         def: false,
         desc: '启用后会启用角色图及增量包中的小清新图像，勇士啊，你准备好了吗'
+      },
+      charSplashSe: {
+        title: '自定义面板小清新插图',
+        key: '面板小清新',
+        def: false,
+        desc: '启用后会启用自定义面板图中的小清新图像（需要开启自定义面板插图且存在se文件夹）'
       }
     }
   },

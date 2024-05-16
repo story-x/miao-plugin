@@ -108,16 +108,19 @@ const ProfileAvatar = {
           break
       }
     }
+    const charSplashSe = Cfg.get('charSplashSe', false)
+    const imgPath = [`profile/normal-character/${name}`]
     if (isSuper) {
-      return CharImg.getRandomImg(
-        [`profile/super-character/${name}`, `profile/normal-character/${name}`],
-        [`${nPath}/imgs/splash0.webp`, `${nPath}/imgs/splash${costume}.webp`, `/${nPath}/imgs/splash.webp`]
-      )
+      imgPath.push(`profile/super-character/${name}`)
+      if (charSplashSe) {
+        imgPath.push(`profile/super-character/${name}/se`, `profile/normal-character/${name}/se`)
+      }
+      return CharImg.getRandomImg(imgPath, [`${nPath}/imgs/splash0.webp`, `${nPath}/imgs/splash${costume}.webp`, `/${nPath}/imgs/splash.webp`])
     } else {
-      return CharImg.getRandomImg(
-        [`profile/normal-character/${name}`],
-        [`${nPath}/imgs/splash${costume}.webp`, `/${nPath}/imgs/splash.webp`]
-      )
+      if (charSplashSe) {
+        imgPath.push(`profile/normal-character/${name}/se`)
+      }
+      return CharImg.getRandomImg(imgPath, [`${nPath}/imgs/splash${costume}.webp`, `/${nPath}/imgs/splash.webp`])
     }
   },
 
